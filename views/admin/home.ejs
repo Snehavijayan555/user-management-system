@@ -1,0 +1,73 @@
+<%- include('../layouts/header.ejs') -%>
+
+<h3 class="mt-2"><center><b>Welcome Admin</b></center></h3>
+<br>
+
+<div class="me-2 ms-2">
+<div class="container mt-4">
+  <label for="searchInput" class="form-label">Search by Name:</label>
+  <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Enter name">
+</div><br><br>
+<div class="text-end">
+  <a href="/admin/new-user" class="btn btn-success my-2">Add New User</a>
+</div>
+<table width="100%" class="table">
+  <thead>
+    <tr class="table-primary text-center">
+      <th scope="col">User Id </th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Mob Number</th>
+      <th scope="col">Actions</th>
+    </tr> 
+    
+    <tbody>
+    <% 
+    if(users.length>0){
+      for(let i=0;i<users.length;i++){
+        %>
+        <tr class="text-center">
+            <td><%= i+1 %></td>
+            <td><%= users[i].name %></td>
+            <td><%= users[i].email %></td>
+            <td><%= users[i].mobile %></td>
+            <td>
+              <a href="/admin/edit-user?id=<%= users[i]._id %>" class="btn btn-info">Edit</a>
+              <a href="/admin/delete-user?id=<%= users[i]._id %>" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+          <%
+        }
+      }else{
+        %>
+        <>
+          <tr>
+            <td colspan="5">User Not Found</td>  
+          </tr>
+        <%
+      }
+      %>
+    </tbody>
+    </table>
+    <br><br>
+</div>
+
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const tableRows = document.querySelectorAll('tbody tr');
+
+  searchInput.addEventListener('input', function () {
+    const searchTerm = searchInput.value.toLowerCase();
+
+    tableRows.forEach(row => {
+      const userName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+      row.style.display = userName.includes(searchTerm) ? '' : 'none';
+    });
+  });
+</script>
+
+
+<%- include("../layouts/footer.ejs") -%>
+
+

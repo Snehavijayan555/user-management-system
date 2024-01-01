@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
   },
   is_admin:{
     type:Number,
-    required:true
+    default:1 //Default as admin verified
   },
   is_verified:{
     type:Number,

@@ -1,4 +1,4 @@
-<% include('../layouts/header.ejs') %>
+<%- include('../layouts/header.ejs') -%>
 
 <h1>Login</h1>
 
@@ -17,5 +17,8 @@ if(typeof message !== 'undefined'){
 <br><br>
 <input type="submit" value="Login">
 </form>
+
+<a href="/register">Signup</a>
+
 
 <% include('../layouts/footer.ejs') %>

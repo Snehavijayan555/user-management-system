@@ -1,0 +1,62 @@
+<%- include('../layouts/header.ejs') -%>
+
+
+  <h3 class="text-center fw-bold mt-3">Add New User</h3>
+  <div class="text-end me-3">
+    <a href="/admin/home" class="btn btn-info">Go Back</a>
+  </div>
+
+
+<div class="">
+  <center>
+    <form action="" method="post" enctype="" class="col-6">
+      <fieldset class="text-start">
+        <label class="form-label mt-4" for="readOnlyInput">Enter Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          placeholder="Enter Name"
+          required
+        />
+      </fieldset>
+      <fieldset class="text-start">
+        <label class="form-label mt-4" for="readOnlyInput">Enter Name</label>
+        <input
+          type="email"
+          name="email"
+          class="form-control"
+          placeholder="Enter Email"
+          required
+        />
+      </fieldset>
+      <fieldset class="text-start">
+        <label class="form-label mt-4" for="readOnlyInput">Enter Name</label>
+        <input
+          type="text"
+          name="mno"
+          class="form-control"
+          placeholder="Enter Mobile"
+          required
+        />
+      </fieldset>
+      <fieldset class="text-start">
+        <label class="form-label mt-4" for="readOnlyInput">Enter Name</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          placeholder="Enter Password"
+          required
+        />
+      </fieldset>
+      <div class="text-end mt-3">
+        <input type="submit" class="btn btn-success" value="Add User" />
+      </div>
+    </form>
+  </center>
+</div>
+
+<% if(typeof message !== 'undefined'){ %>
+<p style="color: red"><%= message %></p>
+<% } %> <%- include('../layouts/footer.ejs') -%>
