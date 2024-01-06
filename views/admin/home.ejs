@@ -1,5 +1,10 @@
 <%- include('../layouts/header.ejs') -%>
 
+<div class="text-end me-3">
+  <a href="/admin/logout" class="btn btn-danger mt-2 mb-2 me-2">Logout</a>
+
+  <!-- <a href="/admin/" class="btn btn-info">Go Back</a> -->
+</div>
 <h3 class="mt-2"><center><b>Welcome Admin</b></center></h3>
 <br>
 
@@ -66,7 +71,15 @@
     });
   });
 </script>
-
+<script>
+  window.addEventListener('pageshow', function (event) {
+    // Check if the page is shown from the session history
+    if (event.persisted) {
+      // Reload the page to prevent cached content
+      window.location.reload();
+    }
+  });
+</script>
 
 <%- include("../layouts/footer.ejs") -%>
 

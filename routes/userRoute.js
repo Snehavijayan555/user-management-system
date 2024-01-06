@@ -7,8 +7,8 @@ const config = require("../config/config");
 user_route.use(
   session({
     secret: config.sessionSecret,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 
@@ -28,6 +28,7 @@ user_route.get("/register", auth.isLogout, userController.loadRegister);
 user_route.post("/register", userController.insertUser);
 
 user_route.get("/", auth.isLogout, userController.loginLoad);
+
 user_route.get("/login", auth.isLogout, userController.loginLoad);
 
 user_route.post("/login", userController.verifyLogin);

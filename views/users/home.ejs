@@ -1,7 +1,9 @@
-<% include('../layouts/header.ejs') %>
+<%- include('../layouts/header.ejs') -%>
 
-<h1>Welcome on Home</h1>
+<div class="text-end">
+    <a href="/logout" class="btn btn-danger mt-2 mb-2 me-2">Logout</a>
+</div>
+<h2 class="fwbold text-center">Welcome on Home</h2>
 
-<a href="/logout">Logout</a>
 
-<% include('../layouts/footer.ejs') %>
+<%- include('../layouts/footer.ejs') -%>

@@ -6,8 +6,8 @@ const config = require("../config/config");
 admin_route.use(
   session({
     secret: config.sessionSecret,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
   })
 );
 
