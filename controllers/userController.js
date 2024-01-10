@@ -45,22 +45,13 @@ const insertUser = async (req, res) => {
   }
 };
 
-// login user methods started
-
-const loginLoad = async (req, res) => {
-  try {
-    res.render("login");
-  } catch (error) {
-    console.log(error.message);
-  }
-};
 
 const verifyLogin = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
 
-    const userData = await User.findOne({ email: email, is_admin:0 });
+    const userData = await User.findOne({ email: email, is_admin: 0 });
 
     if (userData) {
       const passwordMatch = await bcrypt.compare(password, userData.password);
@@ -83,21 +74,44 @@ const verifyLogin = async (req, res) => {
 };
 
 const loadHome = async (req, res) => {
+    try {
+      if (req.session.user_id) {
+        res.render("home");
+      } else {
+        res.redirect("/");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+};
+
+
+
+const loginLoad = async (req, res) => {
   try {
-    res.render("home");
+    if (req.session.user_id) {
+      res.redirect("/home");
+    } else {
+      res.render("login");
+    }
   } catch (error) {
     console.log(error.message);
   }
 };
 
-const userLogout=async(req,res)=>{
-  try{
-req.session.destroy();
-res.redirect('/');
-  }catch(error){
-console.log(error.message);
+
+
+const userLogout = async (req, res) => {
+  try {
+    console.log(req.session.user_id);
+    req.session.user_id = null;
+
+    res.redirect("/");
+
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
 module.exports = {
   loadRegister,
@@ -105,5 +119,5 @@ module.exports = {
   loginLoad,
   verifyLogin,
   loadHome,
-  userLogout
+  userLogout,
 };

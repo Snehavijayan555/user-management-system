@@ -10,11 +10,17 @@ const securePassword = async (password) => {
   }
 };
 
+
+
 const loadLogin = async (req, res) => {
   try {
-    res.render("login");
+    if (req.session.admin_id) {
+      res.redirect("/admin/home");
+    } else {
+      res.render("login");
+    }
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
@@ -22,15 +28,14 @@ const verifyLogin = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-
-    const userData = await User.findOne({ email: email });
+    const userData = await User.findOne({ email: email, is_admin: 1 });
     if (userData) {
       const passwordMatch = await bcrypt.compare(password, userData.password);
       if (passwordMatch) {
         if (userData.is_admin === 0) {
           res.render("login", { message: "Email and password are incorrect" });
         } else {
-          req.session.user_id = userData._id;
+          req.session.admin_id = userData._id;
           res.redirect("/admin/home");
         }
       } else {
@@ -55,101 +60,103 @@ const loadDashboard = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
-    req.session.destroy();
+    req.session.admin_id = null;
     res.redirect("/admin");
   } catch (error) {
     console.log(error.message);
   }
 };
 
+
+
 // add new work start
 
-const newUserLoad = async(req,res)=>{
-  try{
-res.render('new-user');
+const newUserLoad = async (req, res) => {
+  try {
+    res.render('new-user');
   }
-  catch(error){
+  catch (error) {
     console.log(error.message);
   }
-}
+};
 
-const addUser=async(req,res)=>{
-  try{
+const addUser = async (req, res) => {
+  try {
 
-   
-    const name=req.body.name;
-    const email=req.body.email;
-    const mno=req.body.mno;
-    const password=req.body.password;
 
-    const spassword= await securePassword(password);
+    const name = req.body.name;
+    const email = req.body.email;
+    const mno = req.body.mno;
+    const password = req.body.password;
+
+    const spassword = await securePassword(password);
 
     const user = new User({
-      name:name,
-      email:email,
-      mobile:mno,
-      password:spassword,
-      is_admin:0
+      name: name,
+      email: email,
+      mobile: mno,
+      password: spassword,
+      is_admin: 0
     });
 
-    const userData=await user.save();
+    const userData = await user.save();
 
-    if(userData){
-res.redirect('/admin/home')
+    if (userData) {
+      res.redirect('/admin/home');
     }
-    else{
-      res.render('new-user',{message:'Something wrong'});
+    else {
+      res.render('new-user', { message: 'Something wrong' });
     }
 
   }
-  catch(error){
+  catch (error) {
     console.log(error.message);
 
   }
-}
+};
 
 // edit user functionality
-const editUserLoad = async(req,res)=>{
-  try{
-    const id=req.query.id; 
-   const userData = await User.findById({_id:id});
-   if(userData){
-    res.render('edit-user',{user:userData});
-   }
-   else{
-    res.redirect('/admin/home');
-   }
-res.render('edit-user');
+const editUserLoad = async (req, res) => {
+  try {
+    const id = req.query.id;
+    const userData = await User.findById({ _id: id });
+    if (userData) {
+      res.render('edit-user', { user: userData });
+    }
+    else {
+      res.redirect('/admin/home');
+    }
+    res.render('edit-user');
   }
-  catch(error){
+  catch (error) {
     console.log(error.message);
   }
-}
+};
 
-const updateUsers= async(req,res)=>{
-  try{
+const updateUsers = async (req, res) => {
+  try {
 
-  const userData= await  User.findByIdAndUpdate({_id:req.body.id},{$set:{ name:req.body.name,email:req.body.email,mobile:req.body.mno}});
+    const userData = await User.findByIdAndUpdate({ _id: req.body.id }, { $set: { name: req.body.name, email: req.body.email, mobile: req.body.mno } });
 
-  res.redirect('/admin/home');
+    res.redirect('/admin/home');
 
-  }catch(error){
-    console.log(error.message)
+  } catch (error) {
+    console.log(error.message);
   }
-}
+};
 
 // delete user
-const deleteUser=async(req,res)=>{
-  try{
+const deleteUser = async (req, res) => {
+  try {
 
-const id=req.query.id;
-await User.deleteOne({_id:id})
-res.redirect('/admin/home')
+    const id = req.query.id;
+    await User.deleteOne({ _id: id });
+    res.redirect('/admin/home');
   }
-  catch(error){
+  catch (error) {
     console.log(error.message);
   }
-}
+};
 
 module.exports = {
   loadLogin,
@@ -159,5 +166,5 @@ module.exports = {
   newUserLoad,
   addUser,
   editUserLoad,
-  updateUsers,deleteUser
+  updateUsers, deleteUser
 };
