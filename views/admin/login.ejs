@@ -7,14 +7,34 @@
 <% } %>
 <div class="text-center">
   <center>
-  <form action="" method="POST" class="text-center col-6">
-  <input type="email" name="email" class="form-control mt-1" placeholder="Enter Email" />
-  <input type="password" name="password" class="form-control mt-3" placeholder="Enter password" />
-  <div class="text-end">
-    <input type="submit" class="btn btn-info mt-3 col-3" value="Login" />
-  </div>
+    
+
+    <div class="container mt-5"> <!-- Added container class -->
+      <div class="row justify-content-center"> <!-- Added row and justify-content-center classes -->
+        <div class="col-lg-6"> <!-- Changed col-6 to col-lg-6 for responsiveness -->
+          <div class="card transparent-card"> <!-- Added card and transparent-card classes -->
+            <div class="card-body"> <!-- Added card-body class -->
+              <form action="" method="POST"> <!-- Removed text-center and col-6 classes -->
+                <div class="mb-3">
+                  <input type="email" name="email" class="form-control" placeholder="Enter Email" />
+                </div>
+                <div class="mb-3">
+                  <input type="password" name="password" class="form-control" placeholder="Enter Password" />
+                </div>
+                <div class="text-end">
+                  <input type="submit" class="btn btn-info" value="Login" />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+    
 </center>
-</form>
+
 </div>
 
 <%- include('../layouts/footer.ejs') -%>

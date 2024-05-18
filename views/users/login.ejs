@@ -1,36 +1,47 @@
 <%- include('../layouts/header.ejs') -%>
 
-<h3 class="fw-bold text-center mt-3">Login</h3>
+<h3 class="fw-bold text-center mt-3 login-title">Login</h3>
 
 <% if(typeof message !== 'undefined'){ %>
 <h6 class="text-danger text-center col-9"><%= message %></h6>
 <% } %>
 <center>
   <form action="/login" method="post" class="col-6 mt-3">
-    <input
-      type="email"
-      name="email"
-      class="form-control mb-3"
-      required
-      placeholder="Enter Email"
-    />
-    <input
-      type="password"
-      name="password"
-      class="form-control mb-4"
-      required
-      placeholder="Enter Password"
-    />
-    <div class=" text-center">
-      <div>
-        <input type="submit" class="btn btn-info" value="Login" />
-      </div>
-      <div class="mt-5">
-        <p>Don't have an account? 
-            <a href="/register" class="btn btn-primary ">Signup</a></p>
+    <div class="outer-container">
+      <div class="card transparent-card">
+        <div class="card-body">
+          <form>
+            <input
+              type="email"
+              name="email"
+              class="form-control mb-3"
+              required
+              placeholder="Enter Email"
+            />
+            <input
+              type="password"
+              name="password"
+              class="form-control mb-4"
+              required
+              placeholder="Enter Password"
+            />
+            <div class="text-center">
+              <input type="submit" class="btn btn-info" value="Login" />
+            </div>
+          </form>
+          <div class="mt-5 text-center">
+            <p>Don't have an account? 
+              <a href="/register" class="btn btn-primary">Signup</a>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
+    
+  
   </form>
 </center>
 
 <% include('../layouts/footer.ejs') %>
+
+

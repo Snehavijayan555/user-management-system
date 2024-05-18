@@ -1,7 +1,120 @@
 body{
     font-family: 'Open Sans', sans-serif;
-    background-image: url('/assets/7c6f4ca03dca532f37e1c190c9946731.jpg');
+    background-image: url('/assets/erik-mclean-tNO5weLNt-E-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100px;
+}
+
+  
+
+.login-title {
+  color: white; /* Change color of the Login title to maroon */
+}
+
+.transparent-card {
+  background-color: rgba(255, 255, 255, 0.87); /* White background with some transparency */
+  border: 2px solid #053266; /* Blue border */
+  border-radius: 10px; /* Rounded corners */
+  padding: 20px; /* Inner padding */
+  width: 350px; /* Fixed width */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for better visual effect */
+}
+
+.card-body {
+  padding: 20px; /* Padding for card body */
+}
+
+input.form-control {
+  border: 1px solid #053266; /* Blue border for inputs */
+  border-radius: 5px; /* Rounded corners for inputs */
+}
+
+input.form-control:focus {
+  border-color: #053266; /* Darker blue on focus */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow on focus */
+}
+
+.btn-info {
+  background-color: #053266; /* Blue background for button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for button */
+  color: white; /* White text */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.btn-info:hover {
+  background-color: #053266; /* Darker blue on hover */
+}
+
+.btn-primary {
+  background-color: rgb(139, 19, 19); /* Brown background for Signup button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding for button */
+  color: white; /* White text */
+  text-decoration: none; /* Remove underline from link */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.btn-primary:hover {
+  background-color: #570f0c; /* Darker brown on hover */
+}
+ 
+  
+.text-white {
+  color: white; /* Change color of the text to white */
+}
+
+.card {
+  border-radius: 10px; /* Optional: Add border radius for rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visual effect */
+}
+
+.card-img-top {
+  border-top-left-radius: 10px; /* Optional: Add border radius to image */
+  border-top-right-radius: 10px; /* Optional: Add border radius to image */
+}
+
+.card-title {
+  font-weight: bold; /* Make card title bold */
+}
+
+.card-text {
+  color: #555; /* Optional: Change color of the card text */
+}
+
+/* Animation for changing colors */
+@keyframes colorChange {
+  0% { color: rgb(187, 64, 19); }
+  25% { color: midnightblue; }
+  50% { color: mediumvioletred; }
+  75% { color: purple; }
+  100% { color: maroon; }
+}
+
+.changing-colors {
+  animation: colorChange 5s infinite;
+}
+
+/* Animation for moving text */
+@keyframes move {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.moving-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.moving-container h1 {
+  display: inline-block;
+  animation: move 10s linear infinite, colorChange 5s infinite;
+}
+
+
+.text-maroon {
+  color: rgb(17, 135, 189); /* Change color to maroon */
 }

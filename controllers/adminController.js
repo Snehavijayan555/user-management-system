@@ -69,7 +69,7 @@ const logout = async (req, res) => {
 
 
 
-// add new work start
+// add new user start
 
 const newUserLoad = async (req, res) => {
   try {
