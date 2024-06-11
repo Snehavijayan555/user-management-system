@@ -1,61 +1,80 @@
 <%- include('../layouts/header.ejs') -%>
 
-<div class="text-end me-3">
-  <a href="/admin/logout" class="btn btn-danger mt-2 mb-2 me-2">Logout</a>
 
-  <!-- <a href="/admin/" class="btn btn-info">Go Back</a> -->
+<div style="position: absolute; top: 80px; left: 10px;">
+  <a href="/admin/new-user" class="btn btn-success my-2">Add New User</a>
 </div>
-<h3 class="mt-2"><center><b>Welcome Admin</b></center></h3>
+
+
+
+<h3 class="mt-2" style="color: white;"><center><b>Welcome Admin</b></center></h3>
+
 <br>
 
 <div class="me-2 ms-2">
-<div class="container mt-4">
-  <label for="searchInput" class="form-label">Search by Name:</label>
-  <input type="text" id="searchInput" class="form-control form-control-lg" placeholder="Enter name">
-</div><br><br>
-<div class="text-end">
-  <a href="/admin/new-user" class="btn btn-success my-2">Add New User</a>
+  <div class="container mt-4" style="display: flex; justify-content: center;">
+    <div style="display: flex; flex-direction: column; align-items: center; width: 50%;">
+      <label for="searchInput" class="form-label" style="font-weight: 400; text-align: left; width: 100%;">Search by Name:</label>
+      <input type="text" id="searchInput" class="form-control form-control-lg" style="width: 100%;" placeholder="Enter name">
+    </div>
+  </div>
+  <br><br>
 </div>
-<table width="100%" class="table">
+
+
+
+
+
+
+<table width="80%" class="table" style="margin: 0 auto; width: 60%;">
   <thead>
     <tr class="table-primary text-center">
-      <th scope="col">User Id </th>
+      <th scope="col">User Id</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Mob Number</th>
       <th scope="col">Actions</th>
-    </tr> 
-    
-    <tbody>
+    </tr>
+  </thead>
+  <tbody>
     <% 
-    if(users.length>0){
-      for(let i=0;i<users.length;i++){
-        %>
+    if(users.length > 0) {
+      for(let i = 0; i < users.length; i++) {
+    %>
         <tr class="text-center">
-            <td><%= i+1 %></td>
-            <td><%= users[i].name %></td>
-            <td><%= users[i].email %></td>
-            <td><%= users[i].mobile %></td>
-            <td>
-              <a href="/admin/edit-user?id=<%= users[i]._id %>" class="btn btn-info">Edit</a>
-              <a href="/admin/delete-user?id=<%= users[i]._id %>" class="btn btn-danger">Delete</a>
-            </td>
-          </tr>
-          <%
-        }
-      }else{
-        %>
-        <>
-          <tr>
-            <td colspan="5">User Not Found</td>  
-          </tr>
-        <%
+          <td><%= i + 1 %></td>
+          <td><%= users[i].name %></td>
+          <td><%= users[i].email %></td>
+          <td><%= users[i].mobile %></td>
+          <td>
+            <a href="/admin/edit-user?id=<%= users[i]._id %>" class="btn btn-info">Edit</a>
+            <a href="/admin/delete-user?id=<%= users[i]._id %>" class="btn btn-danger">Delete</a>
+          </td>
+        </tr>
+    <% 
       }
-      %>
-    </tbody>
-    </table>
+    } else { 
+    %>
+        <tr>
+          <td colspan="5" class="text-center">User Not Found</td>  
+        </tr>
+    <% 
+    } 
+    %>
+  </tbody>
+</table>
     <br><br>
 </div>
+
+<div class="text-end me-3" style="position: absolute; bottom: 10px; left: 10px;">
+  <a href="/admin/" class="btn btn-info">Go Back</a>
+</div>
+
+
+<div style="position: absolute; top: 10px; right: 10px;">
+  <a href="/admin/logout" class="btn btn-danger mt-2 mb-2 me-2">Logout</a>
+</div>
+
 
 
 <script>

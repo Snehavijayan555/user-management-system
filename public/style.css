@@ -1,6 +1,6 @@
 body{
     font-family: 'Open Sans', sans-serif;
-    background-image: url('/assets/erik-mclean-tNO5weLNt-E-unsplash.jpg');
+    background-image: url('assets/pexels-sean-denny-3475950-5194709.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     height: 100px;
@@ -13,7 +13,7 @@ body{
 }
 
 .transparent-card {
-  background-color: rgba(255, 255, 255, 0.87); /* White background with some transparency */
+  background-color: rgba(255, 255, 255, 0.568); /* White background with some transparency */
   border: 2px solid #053266; /* Blue border */
   border-radius: 10px; /* Rounded corners */
   padding: 20px; /* Inner padding */
@@ -85,13 +85,8 @@ input.form-control:focus {
   color: #555; /* Optional: Change color of the card text */
 }
 
-/* Animation for changing colors */
 @keyframes colorChange {
-  0% { color: rgb(187, 64, 19); }
-  25% { color: midnightblue; }
-  50% { color: mediumvioletred; }
-  75% { color: purple; }
-  100% { color: maroon; }
+  0%, 100% { color: white; }
 }
 
 .changing-colors {
@@ -100,8 +95,10 @@ input.form-control:focus {
 
 /* Animation for moving text */
 @keyframes move {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
+  0% { transform: translateX(0); }
+  50% { transform: translateX(100vw); }
+  50.1% { transform: translateX(-100vw); }
+  100% { transform: translateX(0); }
 }
 
 .moving-container {
@@ -111,10 +108,10 @@ input.form-control:focus {
 
 .moving-container h1 {
   display: inline-block;
-  animation: move 10s linear infinite, colorChange 5s infinite;
+  animation: move 20s linear infinite, colorChange 5s infinite;
 }
 
-
+/* The following class is not needed since the color change is handled above */
 .text-maroon {
-  color: rgb(17, 135, 189); /* Change color to maroon */
+  color: white; /* Change color to white */
 }

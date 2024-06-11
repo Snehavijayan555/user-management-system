@@ -2,33 +2,37 @@
 
 <h3><b><center>Edit User</center></b></h3>
 
-<form action="" method="POST">
-  <center>
-  
-<div class="col-5" >    
-    <fieldset class="text-start">
-      <label class="form-label mt-4" for="readOnlyInput">Username</label>
-    <input type="text" class="form-control" name="name" placeholder="Enter name" value="<%= user.name %>" required/>
-    </fieldset>
-    
-    <fieldset class="text-start">
-      <label class="form-label mt-4" for="readOnlyInput">Email</label>
-    <input type="email" class="form-control" name="email" placeholder="Enter email" value="<%= user.email %>" required/>
-    </fieldset>
-    <fieldset class="text-start">
-      <label class="form-label mt-4" for="readOnlyInput">Mobile Number</label>
-      <input type="text" class="form-control" name="mno" placeholder="Enter Mobile" value="<%= user.mobile %>" required/>
-      <br /><br />
-    </fieldset>
-      <input type="hidden" class="form-control" name="id" value="<%= user._id %>">
-      <div class="text-end">
+<div class="d-flex justify-content-center mt-3">
+  <div class="card" style="width: 30%; background-color: rgba(255, 255, 255, 0.637);">
+    <div class="card-body">
+      <form action="" method="POST">
+        <center>
+          <div class="col-12">    
+            <fieldset class="text-start">
+              <label class="form-label mt-4" for="readOnlyInput">Username</label>
+              <input type="text" class="form-control" name="name" placeholder="Enter name" value="<%= user.name %>" required/>
+            </fieldset>
+            
+            <fieldset class="text-start">
+              <label class="form-label mt-4" for="readOnlyInput">Email</label>
+              <input type="email" class="form-control" name="email" placeholder="Enter email" value="<%= user.email %>" required/>
+            </fieldset>
+            <fieldset class="text-start">
+              <label class="form-label mt-4" for="readOnlyInput">Mobile Number</label>
+              <input type="text" class="form-control" name="mno" placeholder="Enter Mobile" value="<%= user.mobile %>" required/>
+              <br /><br />
+            </fieldset>
+            <input type="hidden" class="form-control" name="id" value="<%= user._id %>">
+            <div class="d-flex justify-content-center mt-3">
+              <input type="submit" value="Update User" class="btn btn-success" />
+            </div>
+          </div>
+        </center>
+      </form>
+    </div>
+  </div>
+</div>
 
-        <input type="submit" value="Update User" class="btn btn-success" />
-
-      </div>
-    </center>
-  </form>
-  
 
 </div>
 
